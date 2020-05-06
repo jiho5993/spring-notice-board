@@ -5,7 +5,7 @@
 <configuration>
 
     <typeAliases>
-        <package name="com.board"/>
+        <typeAlias type="com.board.article.domain.ArticleVO" alias="ArticleVO"/>
     </typeAliases>
 
 </configuration>
