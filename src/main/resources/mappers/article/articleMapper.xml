@@ -18,7 +18,7 @@
             #{title},
             #{content},
             #{writer},
-            now(),
+            #{regDate},
             #{viewCnt}
         )
     </insert>
@@ -50,7 +50,7 @@
         where article_no = #{articleNo}
     </delete>
 
-    <select id="listAll" resultType="ArticleVO">
+    <select id="listAll" resultMap="ArticleResultMap">
         <![CDATA[
         select
             article_no,

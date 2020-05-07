@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/article")
@@ -31,7 +32,8 @@ public class ArticleController {
     // 등록 페이지 이동
     @RequestMapping(value = "/write", method = RequestMethod.GET)
     public String writeGET() {
-        logger.info("write GET...");
+        Date date = new Date();
+        logger.info("write GET... " + date);
 
         return "/article/write";
     }
@@ -39,7 +41,9 @@ public class ArticleController {
     // 등록 처리
     @RequestMapping(value = "/write", method = RequestMethod.POST)
     public String writePOST(ArticleVO articleVO, RedirectAttributes redirectAttributes) throws Exception {
-        logger.info("write POST...");
+        Date date = new Date();
+        logger.info("write POST... " + date);
+        articleVO.setRegDate(date);
         logger.info(articleVO.toString());
         articleService.create(articleVO);
         redirectAttributes.addFlashAttribute("msg", "regSuccess");
@@ -52,7 +56,8 @@ public class ArticleController {
     // 목록 페이지 이동
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) throws Exception {
-        logger.info("list...");
+        Date date = new Date();
+        logger.info("list... " + date);
         model.addAttribute("articles", articleService.listAll());
 
         return "/article/list";
@@ -63,7 +68,8 @@ public class ArticleController {
     // 조회 페이지 이동
     @RequestMapping(value = "/read", method = RequestMethod.GET)
     public String read(@RequestParam("articleNo") int articleNo, Model model) throws Exception {
-        logger.info("read...");
+        Date date = new Date();
+        logger.info("read... " + date);
         model.addAttribute("article", articleService.read(articleNo));
 
         return "/article/read";
@@ -74,7 +80,8 @@ public class ArticleController {
     // 수정 페이지 이동
     @RequestMapping(value = "/modify", method = RequestMethod.GET)
     public String modifyGET(@RequestParam("articleNo") int articleNo, Model model) throws Exception {
-        logger.info("modifyGET...");
+        Date date = new Date();
+        logger.info("modifyGET... " + date);
         model.addAttribute("article", articleService.read(articleNo));
 
         return "/article/modify";
@@ -83,7 +90,8 @@ public class ArticleController {
     // 수정 처리
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
     public String modifyPOST(ArticleVO articleVO, RedirectAttributes redirectAttributes) throws Exception {
-        logger.info("modifyPOST...");
+        Date date = new Date();
+        logger.info("modifyPOST... " + date);
         articleService.update(articleVO);
         redirectAttributes.addFlashAttribute("msg", "modSuccess");
 
@@ -95,7 +103,8 @@ public class ArticleController {
     // 삭제 처리
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
     public String remove(@RequestParam("articleNo") int articleNo, RedirectAttributes redirectAttributes) throws Exception {
-        logger.info("remove...");
+        Date date = new Date();
+        logger.info("remove... " + date);
         articleService.delete(articleNo);
         redirectAttributes.addFlashAttribute("msg", "delSuccess");
 
