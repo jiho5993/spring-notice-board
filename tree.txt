@@ -1,0 +1,31 @@
+├─lib
+├─src
+│  ├─main
+│  │  ├─java
+│  │  │  └─com
+│  │  │      └─board
+│  │  │          ├─article : 게시글
+│  │  │          ├─commons : 공통으로 사용되는 클래스 모음 (aop, exception, interceptor, util)
+│  │  │          ├─reply : 댓글
+│  │  │          ├─tutorial : 연습 예제
+│  │  │          ├─upload : 파일 첨부
+│  │  │          └─user : 회원
+│  │  │             | 기능별 하위 패키지에 각각 아래와 같은 패키지 생성
+│  │  │             |
+│  │  │             ├─controller : spring-mvc의 controller 패키지
+│  │  │             ├─domain : VO(Value Object)가 사용하는 패키지
+│  │  │             ├─persistence : MyBatis의 DAO 인터페이스와 구현 클래스 패키지
+│  │  │             └─service : service 인터페이스와 구현 클래스 패키지
+│  │  ├─resources : log 관련 설정 (log4j.xml, log4jdbc.log4j2.properties, logback.xml), MyBatis설정 xml (mybatis-config.xml)
+│  │  │  ├─mappers : MyBatis XML Mapper 위치, 하위에 각 기능별로 디렉토리 생성
+│  │  │  └─sql
+│  │  └─webapp : web 디렉토리
+│  │      ├─resources : js, css 등의 정적 자원들
+│  │      └─WEB-INF : web information 디렉토리
+│  │          ├─spring-config : spring 관련 설정 xml (
+│  |          |  ├─applicationContext.xml
+│  |          |  └─dispatcher-servlet.xml
+│  │          ├─views : jsp
+│  │          └─web.xml : 스프링과 관련된 설정 xml 파일의 경로 설정, dispatcher url 패턴 설정
+│  └─test
+└─pom.xml : 프로젝트의 정보 및 dependency를 기술
