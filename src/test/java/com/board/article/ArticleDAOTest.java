@@ -3,6 +3,8 @@ package com.board.article;
 import com.board.article.controller.ArticleController;
 import com.board.article.domain.ArticleVO;
 import com.board.article.persistence.ArticleDAO;
+import com.board.commons.paging.Criteria;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -11,6 +13,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.inject.Inject;
+import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring-config/applicationContext.xml"})
@@ -23,31 +27,40 @@ public class ArticleDAOTest {
 
     @Test
     public void testCreate() throws Exception {
+        for(int i=1; i<=1000; i++) {
+            ArticleVO articleVO = new ArticleVO();
+            Date date = new Date();
+            articleVO.setTitle(i + "번째 글 제목입니다.");
+            articleVO.setContent(i + "번째 글 내용입니다.");
+            articleVO.setRegDate(date);
+            articleVO.setWriter("user0" + (i%10));
 
-        ArticleVO article = new ArticleVO();
-        article.setTitle("test title");
-        article.setContent("test content");
-        article.setWriter("test writer");
-        articleDAO.create(article);
+            articleDAO.create(articleVO);
+        }
     }
 
     @Test
-    public void testRead() throws Exception {
-        logger.info(articleDAO.read(104).toString());
+    public void testListPaging() throws Exception {
+        int page = 3;
+
+        List<ArticleVO> articles = articleDAO.listPaging(page);
+
+        for(ArticleVO article : articles) {
+            logger.info(article.toString());
+        }
     }
 
     @Test
-    public void testUpdate() throws Exception {
-        ArticleVO article = new ArticleVO();
-        article.setArticleNo(1);
-        article.setTitle("new title");
-        article.setContent("new content");
-        articleDAO.update(article);
-    }
+    public void testListCriteria() throws Exception {
+        Criteria criteria = new Criteria();
+        criteria.setPage(3);
+        criteria.setPerPageNum(20);
 
-    @Test
-    public void testDelete() throws Exception {
-        articleDAO.delete(1);
+        List<ArticleVO> articles = articleDAO.listCriteria(criteria);
+
+        for(ArticleVO article : articles) {
+            logger.info(article.toString());
+        }
     }
 
 }
