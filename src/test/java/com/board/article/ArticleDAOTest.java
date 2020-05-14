@@ -27,7 +27,7 @@ public class ArticleDAOTest {
 
     @Test
     public void testCreate() throws Exception {
-        for(int i=1; i<=1000; i++) {
+        for(int i=1; i<=123; i++) {
             ArticleVO articleVO = new ArticleVO();
             Date date = new Date();
             articleVO.setTitle(i + "번째 글 제목입니다.");
@@ -61,6 +61,16 @@ public class ArticleDAOTest {
         for(ArticleVO article : articles) {
             logger.info(article.toString());
         }
+    }
+
+    @Test
+    public void testUpdate() throws Exception {
+        ArticleVO articleVO = new ArticleVO();
+        articleVO.setContent("updated1");
+        articleVO.setTitle("updated114324");
+        articleVO.setArticleNo(1000);
+        articleDAO.update(articleVO);
+        logger.info(articleDAO.read(1000).toString());
     }
 
 }

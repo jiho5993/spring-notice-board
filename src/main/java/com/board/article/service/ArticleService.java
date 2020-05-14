@@ -19,4 +19,6 @@ public interface ArticleService {
 
     List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
 
+    int countArticles(Criteria criteria) throws Exception;
+
 }
