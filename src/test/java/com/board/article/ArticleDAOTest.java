@@ -4,7 +4,6 @@ import com.board.article.controller.ArticleController;
 import com.board.article.domain.ArticleVO;
 import com.board.article.persistence.ArticleDAO;
 import com.board.commons.paging.Criteria;
-import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -27,7 +26,7 @@ public class ArticleDAOTest {
 
     @Test
     public void testCreate() throws Exception {
-        for(int i=1; i<=123; i++) {
+        for(int i=1; i<=57; i++) {
             ArticleVO articleVO = new ArticleVO();
             Date date = new Date();
             articleVO.setTitle(i + "번째 글 제목입니다.");

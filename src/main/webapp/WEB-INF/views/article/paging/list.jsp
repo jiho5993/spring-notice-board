@@ -1,17 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
-<%@ include file="../include/head.jsp"%>
+<%@ include file="../../include/head.jsp"%>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini layout-boxed">
 
 <div class="wrapper">
 
     <!-- Main Header -->
-    <%@ include file="../include/main_header.jsp"%>
+    <%@ include file="../../include/main_header.jsp"%>
 
     <!-- Left side column. contains the logo and sidebar -->
-    <%@ include file="../include/left_column.jsp"%>
+    <%@ include file="../../include/left_column.jsp"%>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -51,7 +51,7 @@
                                     <td>${article.articleNo}</td>
                                     <td>
                                         <a href="${path}/article/read${pageMaker.makeQuery(pageMaker.criteria.page)}&articleNo=${article.articleNo}">
-                                            ${article.title}
+                                                ${article.title}
                                         </a>
                                     </td>
                                     <td>${article.writer}</td>
@@ -66,15 +66,15 @@
                         <div class="text-center">
                             <ul class="pagination">
                                 <c:if test="${pageMaker.prev}">
-                                    <li><a href="${path}/article/listPaging${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+                                    <li><a href="${path}/article/paging/list${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
                                 </c:if>
                                 <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
                                     <li <c:out value="${pageMaker.criteria.page == idx ? 'class=active' : ''}"/>>
-                                        <a href="${path}/article/listPaging${pageMaker.makeQuery(idx)}">${idx}</a>
+                                        <a href="${path}/article/paging/list${pageMaker.makeQuery(idx)}">${idx}</a>
                                     </li>
                                 </c:forEach>
                                 <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-                                    <li><a href="${path}/article/listPaging?${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+                                    <li><a href="${path}/article/paging/list${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
                                 </c:if>
                             </ul>
                         </div>
@@ -95,10 +95,10 @@
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    <%@ include file="../include/main_footer.jsp"%>
+    <%@ include file="../../include/main_footer.jsp"%>
 
     <!-- Control Sidebar -->
-    <%@ include file="../include/control_sidebar.jsp"%>
+    <%@ include file="../../include/control_sidebar.jsp"%>
     <!-- /.control-sidebar -->
     <!-- Add the sidebar's background. This div must be placed
     immediately after the control sidebar -->
@@ -106,7 +106,7 @@
 
 </div>
 <!-- ./wrapper -->
-<%@ include file="../include/plugin_js.jsp"%>
+<%@ include file="../../include/plugin_js.jsp"%>
 
 <script>
     var result = "${msg}";
