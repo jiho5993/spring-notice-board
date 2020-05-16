@@ -3,6 +3,7 @@ package com.board.article.service;
 import com.board.article.domain.ArticleVO;
 import com.board.article.persistence.ArticleDAO;
 import com.board.commons.paging.Criteria;
+import com.board.commons.paging.SearchCriteria;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -51,6 +52,16 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public int countArticles(Criteria criteria) throws Exception {
         return articleDAO.countArticles(criteria);
+    }
+
+    @Override
+    public List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception {
+        return articleDAO.listSearch(searchCriteria);
+    }
+
+    @Override
+    public int countSearchedArticles(SearchCriteria searchCriteria) throws Exception {
+        return articleDAO.countSearchedArticles(searchCriteria);
     }
 
 }

@@ -4,6 +4,7 @@ import com.board.article.controller.ArticleController;
 import com.board.article.domain.ArticleVO;
 import com.board.article.persistence.ArticleDAO;
 import com.board.commons.paging.Criteria;
+import com.board.commons.paging.SearchCriteria;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -70,6 +71,26 @@ public class ArticleDAOTest {
         articleVO.setArticleNo(1000);
         articleDAO.update(articleVO);
         logger.info(articleDAO.read(1000).toString());
+    }
+
+    @Test
+    public void testDynamic1() throws Exception {
+        SearchCriteria searchCriteria = new SearchCriteria();
+        searchCriteria.setPage(1);
+        searchCriteria.setKeyword("제목");
+        searchCriteria.setSearchType("t");
+
+        System.out.println("=======================================");
+
+        List<ArticleVO> articles = articleDAO.listSearch(searchCriteria);
+
+        for(ArticleVO article:articles) {
+            logger.info(article.getArticleNo() + " : " + article.getTitle());
+        }
+
+        System.out.println("=======================================");
+
+        logger.info("searched articles count : " + articleDAO.countSearchedArticles(searchCriteria));
     }
 
 }

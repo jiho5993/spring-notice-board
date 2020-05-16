@@ -2,6 +2,7 @@ package com.board.article.service;
 
 import com.board.article.domain.ArticleVO;
 import com.board.commons.paging.Criteria;
+import com.board.commons.paging.SearchCriteria;
 
 import java.util.List;
 
@@ -20,5 +21,9 @@ public interface ArticleService {
     List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
 
     int countArticles(Criteria criteria) throws Exception;
+
+    List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception;
+
+    int countSearchedArticles(SearchCriteria searchCriteria) throws Exception;
 
 }
