@@ -6,6 +6,7 @@
 
     <typeAliases>
         <typeAlias type="com.board.article.domain.ArticleVO" alias="ArticleVO"/>
+        <typeAlias type="com.board.reply.domain.ReplyVO" alias="ReplyVO"/>
     </typeAliases>
 
 </configuration>
