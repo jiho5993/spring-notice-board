@@ -233,7 +233,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     +  "<hr/>";
             });
             $("#replies").html(str);
-            printPageNumbers(data.pageMaker);
+
+            printPageNumbers(data.pageMake); //  전달된 값이 pageMaker가 아니라 pageMake임.
         });
     }
     function printPageNumbers(pageMaker) {
