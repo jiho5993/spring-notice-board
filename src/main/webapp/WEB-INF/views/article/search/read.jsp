@@ -310,7 +310,7 @@
             getReplies("/replies/" + articleNo + "/" + replyPageNum);
         })
 
-        $("#replyAddBtn").on("click", function () {
+        $(".replyAddBtn").on("click", function () {
             var replyWriterObj = $("#newReplyWriter");
             var replyTextObj = $("#newReplyText");
             var replyWriter = replyWriterObj.val();
