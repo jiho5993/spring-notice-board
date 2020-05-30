@@ -20,7 +20,7 @@
 
     <java-version>1.8</java-version>
     <org.springframework-version>5.2.3.RELEASE</org.springframework-version>
-    <org.aspectj-version>1.6.10</org.aspectj-version>
+    <org.aspectj-version>1.9.5</org.aspectj-version>
     <org.slf4j-version>1.6.6</org.slf4j-version>
   </properties>
 
@@ -100,6 +100,11 @@
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjrt</artifactId>
       <version>${org.aspectj-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjtools</artifactId>
+      <version>1.9.5</version>
     </dependency>
 
     <!-- Logging -->
