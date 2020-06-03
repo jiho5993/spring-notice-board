@@ -63,6 +63,12 @@
         from tbl_reply
         where article_no = #{articleNo}
     </select>
+    
+    <select id="getArticleNo" resultType="int">
+        select article_no
+        from tbl_reply
+        where reply_no = #{replyNo}
+    </select>
 
     <resultMap id="ReplyResultMap" type="ReplyVO">
         <id property="replyNo" column="reply_no"/>

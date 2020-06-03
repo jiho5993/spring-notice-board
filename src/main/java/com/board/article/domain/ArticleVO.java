@@ -10,6 +10,15 @@ public class ArticleVO {
     private String writer;
     private Date regDate;
     private int viewCnt;
+    private int replyCnt;
+
+    public int getReplyCnt() {
+        return replyCnt;
+    }
+
+    public void setReplyCnt(int replyCnt) {
+        this.replyCnt = replyCnt;
+    }
 
     public Integer getArticleNo() {
         return articleNo;

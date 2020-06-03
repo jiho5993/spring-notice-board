@@ -113,7 +113,8 @@
             content,
             writer,
             regdate,
-            viewcnt
+            viewcnt,
+            reply_cnt
         from tbl_article
         where article_no > 0
         ]]>
@@ -166,6 +167,18 @@
         </if>
     </sql>
     
+    <update id="updateReplyCnt">
+        update tbl_article
+        set reply_cnt = reply_cnt + #{amount}
+        where article_no = #{articleNo}
+    </update>
+
+    <update id="updateViewCnt">
+        update tbl_article
+        set viewcnt = viewcnt + 1
+        where article_no = #{articleNo}
+    </update>
+    
     <resultMap id="ArticleResultMap" type="ArticleVO">
         <id property="articleNo" column="article_no"/>
         <result property="title" column="title"/>
@@ -173,6 +186,7 @@
         <result property="writer" column="writer"/>
         <result property="regDate" column="regdate"/>
         <result property="viewCnt" column="viewcnt"/>
+        <result property="replyCnt" column="reply_cnt"/>
     </resultMap>
 
 </mapper>
