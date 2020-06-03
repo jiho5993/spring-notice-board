@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/article/paging/search")
@@ -27,6 +28,24 @@ public class ArticlePagingSearchController {
     @Inject
     public ArticlePagingSearchController(ArticleService articleService) {
         this.articleService = articleService;
+    }
+
+    @RequestMapping(value = "/write", method = RequestMethod.GET)
+    public String writeGET(@ModelAttribute("searchCriteria") SearchCriteria searchCriteria) {
+        logger.info("search writeGET() called...");
+
+        return "article/search/write";
+    }
+
+    @RequestMapping(value = "/write", method = RequestMethod.POST)
+    public String writePOST(ArticleVO articleVO, RedirectAttributes redirectAttributes) throws Exception {
+        logger.info("search writePOST() called...");
+        articleVO.setRegDate(new Date());
+        logger.info(articleVO.toString());
+        articleService.create(articleVO);
+        redirectAttributes.addFlashAttribute("msg", "regSuccess");
+
+        return "redirect:/article/paging/search/list";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
